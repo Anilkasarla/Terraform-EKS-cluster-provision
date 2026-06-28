@@ -1,5 +1,6 @@
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
+  version = "~> 5.8"
   name = "eks-vpc"
   cidr = "10.0.0.0/16"
 
@@ -48,7 +49,7 @@ module "vpc" {
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "~> 20.0"
+  version = "~> 20.31"
   cluster_name    = var.cluster_name
   cluster_version = "1.31"
   bootstrap_self_managed_addons = true
