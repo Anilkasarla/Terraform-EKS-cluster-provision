@@ -3,6 +3,11 @@ name: Terraform Destroy
 on:
 
   workflow_dispatch:
+    inputs:
+      action:
+        description: "Specify the terraform action: apply or destory"
+        required: true
+        default: destroy
 
 permissions:
   id-token: write
