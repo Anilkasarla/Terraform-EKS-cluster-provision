@@ -2,6 +2,11 @@ name: Terraform apply
 
 on: 
   workflow_dispatch:
+    inputs:
+      action:
+        description: "Specify the terraform action: apply or destory"
+        required: true
+        default: apply
 
 permissions:
   id-token: write
