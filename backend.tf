@@ -1,5 +1,3 @@
-</> hcl
-
 terraform {
   backend "s3" {
     bucket = "mlops-dvc-bucket13"
