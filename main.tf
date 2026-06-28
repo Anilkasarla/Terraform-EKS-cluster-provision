@@ -51,7 +51,7 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 20.31"
   cluster_name    = var.cluster_name
-  cluster_version = "1.31"
+  cluster_version = "1.32"
   bootstrap_self_managed_addons = true
   cluster_upgrade_policy = {
    support_type = "STANDARD"
