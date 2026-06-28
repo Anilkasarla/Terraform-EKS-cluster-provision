@@ -1,9 +1,6 @@
 module "vpc" {
-
   source = "terraform-aws-modules/vpc/aws"
-
   name = "eks-vpc"
-
   cidr = "10.0.0.0/16"
 
   azs = [
@@ -22,51 +19,29 @@ module "vpc" {
   ]
 
   enable_nat_gateway = true
-
   single_nat_gateway = true
-
   enable_dns_hostnames = true
 
   tags = {
-
     "kubernetes.io/cluster/${var.cluster_name}" = "shared"
-
   }
-
 }
 
 module "eks" {
-
   source = "terraform-aws-modules/eks/aws"
-
-  cluster_name = var.cluster_name
-
-  cluster_version = "1.30"
-
+  #cluster_name = var.cluster_name
+  #cluster_version = "1.30"
   subnet_ids = module.vpc.private_subnets
-
   vpc_id = module.vpc.vpc_id
-
   enable_irsa = true
-
   cluster_endpoint_public_access = true
-
   eks_managed_node_groups = {
-
     default = {
-
       instance_types = ["t3.medium"]
-
       desired_size = 1
-
       min_size = 1
-
       max_size = 1
-
       disk_size = 30
-
     }
-
   }
-
 }
